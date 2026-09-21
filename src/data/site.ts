@@ -15,5 +15,8 @@ export const site = {
     "Upfront quotes",
     "We recycle & donate",
   ],
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://southernpeachjunkremoval.com",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL.trim()
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : "https://southernpeachjunkremoval.com",
 } as const;
