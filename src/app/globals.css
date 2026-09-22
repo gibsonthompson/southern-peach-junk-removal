@@ -762,6 +762,26 @@ p {
   color: var(--orange);
 }
 
+.area-map {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line-warm);
+  margin-bottom: 46px;
+  line-height: 0;
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6);
+}
+.area-map iframe {
+  width: 100%;
+  height: 420px;
+  border: 0;
+  display: block;
+}
+@media (max-width: 560px) {
+  .area-map iframe {
+    height: 300px;
+  }
+}
+
 /* cta */
 .cta-band {
   position: relative;
