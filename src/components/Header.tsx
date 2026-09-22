@@ -1,26 +1,27 @@
+import Link from "next/link";
 import { site } from "@/data/site";
 import { Icon } from "@/components/icons";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#process", label: "How It Works" },
-  { href: "#areas", label: "Service Area" },
+  { href: "/services", label: "Services" },
+  { href: "/#gallery", label: "Gallery" },
+  { href: "/#process", label: "How It Works" },
+  { href: "/service-area", label: "Service Area" },
 ];
 
 export function Header() {
   return (
     <header className="site-header">
       <div className="wrap nav">
-        <a href="#top" aria-label={`${site.name} home`}>
+        <Link href="/" aria-label={`${site.name} home`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="logo" src="/peach-mark.png" alt={site.name} />
-        </a>
+        </Link>
         <nav className="nav-links">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href}>
+            <Link key={l.href} href={l.href}>
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <a className="nav-call" href={site.phoneHref}>
