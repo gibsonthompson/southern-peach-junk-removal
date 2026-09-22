@@ -903,8 +903,7 @@ p {
     padding: 48px 0 56px;
   }
   .hero-art {
-    grid-row: 1;
-    margin-bottom: 6px;
+    margin-top: 18px;
   }
   .hero-art img {
     width: min(70vw, 380px);
@@ -967,13 +966,21 @@ p {
   .foot-top {
     grid-template-columns: 1fr;
   }
-  .trust .t {
-    padding: 6px 0;
-    border-left: none !important;
-    width: auto;
-  }
   .trust {
-    gap: 6px 22px;
+    flex-wrap: nowrap;
+    gap: 0 6px;
+    justify-content: space-between;
+  }
+  .trust .t {
+    padding: 0;
+    border-left: none !important;
+    font-size: 10.5px;
+    gap: 5px;
+    white-space: nowrap;
+  }
+  .trust .t svg {
+    width: 12px;
+    height: 12px;
   }
   body {
     padding-bottom: 74px;

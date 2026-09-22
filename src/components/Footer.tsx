@@ -38,8 +38,9 @@ export function Footer() {
         <div className="foot-bottom">
           <span className="tag">{site.tagline}</span>
           <span className="cr">
-            &copy; {new Date().getFullYear()} {site.name}, {site.state}. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {site.name}, {site.state}.
+            <br />
+            All rights reserved.
           </span>
         </div>
       </div>
