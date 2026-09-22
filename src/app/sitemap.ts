@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 import { services } from "@/data/services";
+import { locations } from "@/data/locations";
 
-// Phase 4: add location routes here as those pages ship.
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
@@ -13,6 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: s.category === "core" ? 0.9 : 0.7,
+    })),
+    { url: `${site.url}/service-area`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...locations.map((l) => ({
+      url: `${site.url}/service-area/${l.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
 }

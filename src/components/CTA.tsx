@@ -11,7 +11,7 @@ export function CTA() {
           pressure.
         </p>
         <div className="hero-cta">
-          <a className="btn btn-primary" href={site.phoneHref}>
+          <a className="btn btn-primary" href="/quote">
             Get A Free Quote
           </a>
           <a className="btn btn-dark" href={site.phoneHref}>

@@ -7,7 +7,7 @@ export function MobileBar() {
       <a className="btn btn-ghost" href={site.phoneHref}>
         <Icon name="phone" /> Call
       </a>
-      <a className="btn btn-primary" href="#quote">
+      <a className="btn btn-primary" href="/quote">
         Free Quote
       </a>
     </div>

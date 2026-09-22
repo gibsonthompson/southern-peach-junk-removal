@@ -20,11 +20,11 @@ export function Footer() {
           </div>
           <div className="foot-col">
             <h4>Service Area</h4>
-            <a href="#areas">Atlanta</a>
-            <a href="#areas">Alpharetta</a>
-            <a href="#areas">Roswell</a>
-            <a href="#areas">Marietta</a>
-            <a href="#areas">Sandy Springs</a>
+            <a href="/service-area/atlanta">Atlanta</a>
+            <a href="/service-area/alpharetta">Alpharetta</a>
+            <a href="/service-area/roswell">Roswell</a>
+            <a href="/service-area/marietta">Marietta</a>
+            <a href="/service-area">All areas</a>
           </div>
           <div className="foot-col">
             <h4>Get A Quote</h4>
@@ -32,7 +32,7 @@ export function Footer() {
               {site.phone}
             </a>
             <a href="#quote">Request a free quote</a>
-            <a href="#areas">Check your area</a>
+            <a href="/service-area">Check your area</a>
           </div>
         </div>
         <div className="foot-bottom">

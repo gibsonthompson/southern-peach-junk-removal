@@ -21,7 +21,7 @@ export function Hero() {
             up</b>, most of it recycled or donated.
           </p>
           <div className="hero-cta">
-            <a className="btn btn-primary" href="#quote">
+            <a className="btn btn-primary" href="/quote">
               Get A Free Quote
             </a>
             <a className="btn btn-ghost" href={site.phoneHref}>
@@ -40,7 +40,7 @@ export function Hero() {
         <div className="hero-art">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/peach-mark.png"
+            src="/logo-black.png"
             alt="Southern Peach Junk Removal, Atlanta skyline inside a Georgia peach"
           />
         </div>

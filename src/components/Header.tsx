@@ -14,7 +14,7 @@ export function Header() {
       <div className="wrap nav">
         <a href="#top" aria-label={`${site.name} home`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="logo" src="/logo-black.png" alt={site.name} />
+          <img className="logo" src="/peach-mark.png" alt={site.name} />
         </a>
         <nav className="nav-links">
           {navLinks.map((l) => (

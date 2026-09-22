@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { locationsByRegion } from "@/data/locations";
 import { Icon } from "@/components/icons";
 
@@ -19,11 +20,10 @@ export function ServiceArea() {
               <h3>{region}</h3>
               <div className="city-list">
                 {cities.map((c) => (
-                  // Phase 4: point href to `/service-area/${c.slug}`.
-                  <a href="#quote" key={c.slug}>
+                  <Link href={`/service-area/${c.slug}`} key={c.slug}>
                     <Icon name="pin" />
                     {c.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

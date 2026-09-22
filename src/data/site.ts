@@ -9,12 +9,7 @@ export const site = {
   metro: "Metro Atlanta",
   description:
     "Junk removal, dumpster rentals, and light demolition across metro Atlanta.",
-  trust: [
-    "Licensed & insured",
-    "Same-day availability",
-    "Upfront quotes",
-    "We recycle & donate",
-  ],
+  trust: ["Licensed & Insured", "Same-Day Availability", "Upfront Quotes"],
   url:
     process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL.trim()
       ? process.env.NEXT_PUBLIC_SITE_URL
