@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/quote" },
 };
 
+const reasons = [
+  "A real quote, usually the same day",
+  "No obligation and no hidden fees",
+  "Licensed, insured, and local",
+  "We recycle and donate first",
+];
+
 export default function QuotePage() {
   return (
     <>
@@ -29,20 +36,32 @@ export default function QuotePage() {
               </span>
               <h1>Get A Free Quote</h1>
               <p className="tagline">Send a few photos, get a straight price today.</p>
-              <div className="intro">
-                <p>
-                  Tell us what needs to go and add a couple of photos if you can. You
-                  get an upfront, no-obligation quote back, most of the time the same
-                  day. No surprise fees, and the price we quote is the price you pay.
-                </p>
-              </div>
             </div>
           </div>
         </section>
 
         <section className="section quote-band">
           <div className="wrap">
-            <QuoteForm />
+            <div className="quote-layout">
+              <div className="quote-card">
+                <QuoteForm />
+              </div>
+              <aside className="quote-aside">
+                <h2>Fast, Free, No Pressure</h2>
+                <ul>
+                  {reasons.map((r) => (
+                    <li key={r}>
+                      <Icon name="check" />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+                <div className="aside-call">
+                  <span>Rather talk it through?</span>
+                  <a href={site.phoneHref}>{site.phone}</a>
+                </div>
+              </aside>
+            </div>
           </div>
         </section>
       </main>

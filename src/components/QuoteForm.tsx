@@ -1,12 +1,97 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/icons";
 import { site } from "@/data/site";
 import { coreServices, subServices } from "@/data/services";
 import { locations } from "@/data/locations";
 
-const serviceOptions = [...coreServices, ...subServices].map((s) => s.name);
+const serviceOptions = [
+  ...coreServices.map((s) => s.name),
+  ...subServices.map((s) => s.name),
+  "Not sure yet",
+];
+const cityOptions = [...locations.map((l) => l.name), "Other / not listed"];
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={`cs-chev ${open ? "open" : ""}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+function CustomSelect({
+  name,
+  placeholder,
+  options,
+}: {
+  name: string;
+  placeholder: string;
+  options: string[];
+}) {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onDoc(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    function onEsc(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    document.addEventListener("keydown", onEsc);
+    return () => {
+      document.removeEventListener("mousedown", onDoc);
+      document.removeEventListener("keydown", onEsc);
+    };
+  }, []);
+
+  return (
+    <div className="cs" ref={ref}>
+      <input type="hidden" name={name} value={value} />
+      <button
+        type="button"
+        className={`cs-btn ${value ? "" : "cs-placeholder"}`}
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span>{value || placeholder}</span>
+        <Chevron open={open} />
+      </button>
+      {open && (
+        <ul className="cs-panel" role="listbox">
+          {options.map((opt) => (
+            <li
+              key={opt}
+              role="option"
+              aria-selected={opt === value}
+              className={`cs-opt ${opt === value ? "sel" : ""}`}
+              onClick={() => {
+                setValue(opt);
+                setOpen(false);
+              }}
+            >
+              {opt}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 export function QuoteForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">(
@@ -40,9 +125,8 @@ export function QuoteForm() {
         <Icon name="check" />
         <h3>Got it. We&apos;ll be in touch shortly.</h3>
         <p>
-          Your request is in and we&apos;ll get you a quote today. Need us
-          sooner? Call{" "}
-          <a href={site.phoneHref}>{site.phone}</a>.
+          Your request is in and we&apos;ll get you a quote today. Need us sooner?
+          Call <a href={site.phoneHref}>{site.phone}</a>.
         </p>
       </div>
     );
@@ -50,6 +134,10 @@ export function QuoteForm() {
 
   return (
     <form className="quote-form" onSubmit={handleSubmit}>
+      <p className="card-intro">
+        Tell us what needs to go and add a few photos. We&apos;ll text you back a
+        straight quote, usually the same day.
+      </p>
       <div className="form-grid">
         <div className="field">
           <label htmlFor="name">Name</label>
@@ -64,32 +152,16 @@ export function QuoteForm() {
           <input id="email" name="email" type="email" autoComplete="email" />
         </div>
         <div className="field">
-          <label htmlFor="city">City</label>
-          <select id="city" name="city" defaultValue="">
-            <option value="" disabled>
-              Select a city
-            </option>
-            {locations.map((l) => (
-              <option key={l.slug} value={l.name}>
-                {l.name}
-              </option>
-            ))}
-            <option value="Other">Other / not listed</option>
-          </select>
+          <label>City</label>
+          <CustomSelect name="city" placeholder="Select a city" options={cityOptions} />
         </div>
-        <div className="field">
-          <label htmlFor="service">Service</label>
-          <select id="service" name="service" defaultValue="">
-            <option value="" disabled>
-              What do you need?
-            </option>
-            {serviceOptions.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-            <option value="Not sure">Not sure yet</option>
-          </select>
+        <div className="field field-full">
+          <label>Service</label>
+          <CustomSelect
+            name="service"
+            placeholder="What do you need?"
+            options={serviceOptions}
+          />
         </div>
         <div className="field field-full">
           <label htmlFor="details">Details</label>
@@ -132,8 +204,7 @@ export function QuoteForm() {
         {status === "sending" ? "Sending..." : "Send My Request"}
       </button>
       <p className="form-note">
-        Prefer to talk? Call or text{" "}
-        <a href={site.phoneHref}>{site.phone}</a>.
+        Prefer to talk? Call or text <a href={site.phoneHref}>{site.phone}</a>.
       </p>
     </form>
   );
