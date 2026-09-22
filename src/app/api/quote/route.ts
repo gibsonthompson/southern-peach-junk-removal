@@ -62,11 +62,19 @@ export async function POST(req: Request) {
     }
 
     await sendOwnerSms(
-      `New quote request\n${name} - ${phone}\n${city || "City n/a"} | ${
-        service || "Service n/a"
-      }\n${photoUrls.length} photo(s)\n${
-        details ? details.slice(0, 300) : "(no details)"
-      }\n${site.url}/admin`
+      [
+        site.name,
+        "New quote request",
+        "",
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        `City: ${city || "n/a"}`,
+        `Service: ${service || "n/a"}`,
+        `Photos: ${photoUrls.length}`,
+        `Details: ${details ? details.slice(0, 400) : "n/a"}`,
+        "",
+        `View in admin: ${site.url}/admin`,
+      ].join("\n")
     );
 
     return NextResponse.json({ ok: true });

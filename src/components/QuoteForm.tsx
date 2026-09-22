@@ -125,8 +125,9 @@ export function QuoteForm() {
         <Icon name="check" />
         <h3>Got it. We&apos;ll be in touch shortly.</h3>
         <p>
-          Your request is in and we&apos;ll get you a quote today. Need us sooner?
-          Call <a href={site.phoneHref}>{site.phone}</a>.
+          Your request is in and we&apos;ll get you a quote today.
+          <br />
+          Need us sooner? Call <a href={site.phoneHref}>{site.phone}</a>.
         </p>
       </div>
     );
@@ -179,7 +180,7 @@ export function QuoteForm() {
             <span>
               {photoCount > 0
                 ? `${photoCount} photo${photoCount > 1 ? "s" : ""} attached`
-                : "Tap to add photos of your junk"}
+                : "Tap to add photos of your space"}
             </span>
           </label>
           <input
