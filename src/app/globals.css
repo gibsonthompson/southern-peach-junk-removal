@@ -766,7 +766,7 @@ p {
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--line-warm);
-  margin-bottom: 46px;
+  margin-top: 48px;
   line-height: 0;
   box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6);
 }

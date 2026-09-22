@@ -15,15 +15,6 @@ export function ServiceArea() {
           </p>
         </div>
 
-        <div className="area-map">
-          <iframe
-            title="Southern Peach Junk Removal service area, metro Atlanta"
-            src="https://maps.google.com/maps?q=Atlanta,GA&z=9&output=embed"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-
         <div className="area-grid">
           {Object.entries(locationsByRegion).map(([region, cities]) => (
             <div className="area-block" key={region}>
@@ -38,6 +29,15 @@ export function ServiceArea() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="area-map">
+          <iframe
+            title="Southern Peach Junk Removal service area, metro Atlanta"
+            src="https://maps.google.com/maps?q=Atlanta,GA&z=11&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
     </section>
