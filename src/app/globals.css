@@ -1654,22 +1654,98 @@ p {
   gap: 14px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
+  padding-bottom: 14px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-warm) transparent;
+}
+.vid-strip::-webkit-scrollbar {
+  height: 6px;
+}
+.vid-strip::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+.vid-strip::-webkit-scrollbar-thumb {
+  background: var(--line-warm);
+  border-radius: 3px;
+}
+.vid-strip::-webkit-scrollbar-thumb:hover {
+  background: var(--orange);
 }
 .vid-card {
   flex: 0 0 auto;
   width: 240px;
   scroll-snap-align: start;
 }
-.vid-card .vid {
+.vid-frame {
+  position: relative;
   width: 100%;
   aspect-ratio: 9 / 16;
-  object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
+  overflow: hidden;
   border: 1px solid var(--line);
   background: #000;
+}
+.vid-frame .vid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+}
+.vid-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: #000;
+  display: block;
+}
+.vid-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vid-poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45));
+  transition: background 0.2s;
+}
+.vid-poster:hover::after {
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35));
+}
+.vid-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--orange-bright), var(--orange));
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 26px -6px rgba(242, 106, 42, 0.7);
+  transition: transform 0.2s;
+}
+.vid-poster:hover .vid-play {
+  transform: translate(-50%, -50%) scale(1.09);
+}
+.vid-play svg {
+  width: 24px;
+  height: 24px;
+  color: #1a0e05;
+  margin-left: 3px;
 }
 .vid-card figcaption {
   margin-top: 12px;
@@ -1699,4 +1775,61 @@ p {
   width: 100%;
   height: auto;
   display: block;
+}
+
+
+/* ===== hero: featured ad ===== */
+.hero-ad-hero::before {
+  top: -8%;
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 90%;
+}
+.hero-ad-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 0 66px;
+}
+.hero-ad-inner .hero-eyebrow {
+  margin-bottom: 22px;
+}
+.hero-ad-frame {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line-warm);
+  box-shadow: 0 40px 90px -34px rgba(242, 106, 42, 0.45),
+    0 22px 55px -22px rgba(0, 0, 0, 0.85);
+  line-height: 0;
+}
+.hero-ad-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.hero-ad-inner .hero-cta {
+  justify-content: center;
+  margin: 34px 0 24px;
+}
+.hero-ad-inner .trust {
+  justify-content: center;
+}
+@media (max-width: 560px) {
+  .hero-ad-inner {
+    padding: 28px 0 48px;
+  }
+  .hero-ad-inner .hero-cta {
+    width: 100%;
+  }
+  .hero-ad-inner .hero-cta .btn {
+    flex: 1;
+    justify-content: center;
+  }
 }
