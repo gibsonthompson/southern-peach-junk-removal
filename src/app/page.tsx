@@ -2,6 +2,8 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { Gallery } from "@/components/Gallery";
+import { Videos } from "@/components/Videos";
+import { Crew } from "@/components/Crew";
 import { Audiences } from "@/components/Audiences";
 import { Process } from "@/components/Process";
 import { WhatWeHaul } from "@/components/WhatWeHaul";
@@ -40,9 +42,11 @@ export default function HomePage() {
         <Hero />
         <Services />
         <Gallery />
+        <Videos />
         <Audiences />
         <Process />
         <WhatWeHaul />
+        <Crew />
         <WhyUs />
         <ServiceArea />
         <CTA />

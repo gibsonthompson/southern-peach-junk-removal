@@ -1643,3 +1643,60 @@ p {
     font-size: 30px;
   }
 }
+
+/* ===== videos ===== */
+.vid-band {
+  background: linear-gradient(180deg, var(--ink-2), var(--ink));
+  border-top: 1px solid var(--line);
+}
+.vid-strip {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.vid-card {
+  flex: 0 0 auto;
+  width: 240px;
+  scroll-snap-align: start;
+}
+.vid-card .vid {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #000;
+  display: block;
+}
+.vid-card figcaption {
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+}
+@media (max-width: 560px) {
+  .vid-card {
+    width: 210px;
+  }
+}
+
+/* ===== crew ===== */
+.crew-band {
+  background: var(--black);
+  border-top: 1px solid var(--line);
+}
+.crew-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line-warm);
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.6);
+  line-height: 0;
+}
+.crew-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
