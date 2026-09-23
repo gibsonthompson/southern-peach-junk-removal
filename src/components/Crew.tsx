@@ -4,11 +4,11 @@ export function Crew() {
       <div className="wrap">
         <div className="section-head">
           <span className="kicker">The Crew</span>
-          <h2>Locally Owned, On Every Job</h2>
+          <h2>The Same Crew, Every Job</h2>
           <p>
-            The same crew that answers the phone is the one that shows up at your
-            door. Real people from right here in Georgia, not a call center three
-            states away.
+            You get the same crew from the first call to the last load on the
+            truck. We show up when we say we will, work clean, and treat your
+            property like it is ours.
           </p>
         </div>
         <div className="crew-photo">
