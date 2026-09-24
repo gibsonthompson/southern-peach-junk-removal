@@ -108,6 +108,11 @@ export function AdminDashboard({ submissions }: { submissions: Submission[] }) {
     return acc;
   }, {});
 
+  async function logout() {
+    await fetch("/api/admin/logout", { method: "POST" });
+    window.location.reload();
+  }
+
   return (
     <div className="admin-wrap">
       <header className="admin-head">
@@ -118,6 +123,9 @@ export function AdminDashboard({ submissions }: { submissions: Submission[] }) {
             {counts.new ? ` · ${counts.new} new` : ""}
           </p>
         </div>
+        <button className="admin-logout" onClick={logout}>
+          Log out
+        </button>
       </header>
 
       {submissions.length === 0 ? (

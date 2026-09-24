@@ -1,10 +1,16 @@
-import { getSupabaseAdmin, QUOTE_TABLE, type Submission } from "@/lib/supabase";
+import { isAdmin } from "@/lib/admin-auth";
+import { AdminLogin } from "@/components/AdminLogin";
 import { AdminDashboard } from "@/components/AdminDashboard";
+import { getSupabaseAdmin, QUOTE_TABLE, type Submission } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Admin", robots: { index: false, follow: false } };
 
 export default async function AdminPage() {
+  if (!isAdmin()) {
+    return <AdminLogin />;
+  }
+
   let submissions: Submission[] = [];
   let loadError = "";
   try {

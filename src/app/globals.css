@@ -1776,3 +1776,118 @@ p {
   height: auto;
   display: block;
 }
+
+/* ===== admin login (PIN) ===== */
+.pin-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--ink);
+}
+.pin-card {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+.pin-logo {
+  height: 52px;
+  width: auto;
+  margin: 0 auto 22px;
+}
+.pin-card h1 {
+  font-family: var(--font-anton), sans-serif;
+  font-size: 34px;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+.pin-sub {
+  color: var(--muted);
+  margin: 8px 0 26px;
+  font-size: 15px;
+}
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+.pin-dots.err {
+  animation: pin-shake 0.4s;
+}
+.pin-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--line-warm);
+  transition: background 0.15s, border-color 0.15s;
+}
+.pin-dot.on {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+.pin-error {
+  color: #ff6b5c;
+  font-weight: 600;
+  font-size: 14px;
+  min-height: 20px;
+  margin: 12px 0 0;
+}
+.pin-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+.pin-key {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  color: #fff;
+  font-family: var(--font-anton), sans-serif;
+  font-size: 26px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, border-color 0.15s, transform 0.08s;
+}
+.pin-key:hover {
+  border-color: var(--orange);
+}
+.pin-key:active {
+  transform: scale(0.94);
+  background: var(--ink-3);
+}
+.pin-key svg {
+  width: 26px;
+  height: 26px;
+  color: var(--muted);
+}
+@keyframes pin-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-7px);
+  }
+  75% {
+    transform: translateX(7px);
+  }
+}
+.admin-logout {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 4px;
+  padding: 9px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.admin-logout:hover {
+  border-color: var(--orange);
+  color: #fff;
+}

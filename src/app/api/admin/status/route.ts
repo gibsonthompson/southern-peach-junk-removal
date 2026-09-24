@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin, QUOTE_TABLE, STATUSES } from "@/lib/supabase";
+import { isAdmin } from "@/lib/admin-auth";
 
 export const runtime = "nodejs";
 
 // Protected by middleware (Basic Auth on /api/admin/*).
 export async function POST(req: Request) {
+  if (!isAdmin()) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
   try {
     const { id, status } = await req.json();
     if (!id || !STATUSES.includes(status)) {
