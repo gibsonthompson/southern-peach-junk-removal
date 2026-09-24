@@ -41,12 +41,12 @@ export default function HomePage() {
       <main>
         <Hero />
         <Services />
+        <Crew />
         <Gallery />
         <Videos />
         <Audiences />
         <Process />
         <WhatWeHaul />
-        <Crew />
         <WhyUs />
         <ServiceArea />
         <CTA />
